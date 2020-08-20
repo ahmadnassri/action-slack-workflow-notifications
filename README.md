@@ -38,10 +38,14 @@ jobs:
       - run: npm install
       - run: npm test
 
+  # include one last job
   slack:
-    - uses: ahmadnassri/action-slack-workflow-notifications@v1
-      with:
-        slack-webhook: https://hooks.slack.com/services/...
+    if: ${{ always() }} # ensure this job always runs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ahmadnassri/action-slack-workflow-notifications@v1
+        with:
+          slack-webhook: https://hooks.slack.com/services/...
 ```
 
 ### Inputs
