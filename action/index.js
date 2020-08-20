@@ -1,6 +1,8 @@
+// packages
 const { IncomingWebhook } = require('@slack/webhook')
 const core = require('@actions/core')
 const github = require('@actions/github')
+// libraries
 const message = require('./lib/message')
 
 // parse inputs
@@ -11,8 +13,8 @@ const inputs = {
 
 // error handler
 function errorHandler (err) {
-  console.error(err)
-  core.setFailed(`Unhandled error: ${err}`)
+  core.error(`Unhandled error: ${err}`)
+  process.exit(1)
 }
 
 // catch errors and exit
@@ -21,10 +23,11 @@ process.on('uncaughtException', errorHandler)
 
 // exit early
 if (!github.context.workflow || !github.context.runId) {
-  core.setFailed('action triggered outside of a workflow run')
+  core.error('action triggered outside of a workflow run')
   process.exit(1)
 }
 
+// initiate the client
 const octokit = github.getOctokit(inputs.token)
 
 async function main () {
@@ -55,4 +58,5 @@ async function main () {
   await webhook.send({ blocks })
 }
 
+// awaiting top-level await
 main()
