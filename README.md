@@ -35,7 +35,6 @@ jobs:
     steps:
       # run as many steps as you need
       - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
       - run: npm install
       - run: npm test
@@ -49,6 +48,8 @@ jobs:
       - uses: ahmadnassri/action-slack-workflow-notifications@v1
         with:
           slack-webhook: https://hooks.slack.com/services/...
+          ignore-jobs: slack
+          ignore-steps: actions/checkout@v2
 ```
 
 ### Inputs
