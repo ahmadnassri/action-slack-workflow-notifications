@@ -1,0 +1,19 @@
+name: GitHub Slack Workflow Notifications
+description: Fully detailed GitHub Actions workflow notifications in Slack
+
+branding:
+  color: green
+  icon: message-square
+
+inputs:
+  github-token:
+    description: The GitHub token used to update the pull-request
+    default: ${{ github.token }}
+
+  slack-webhook:
+    description: A Slack Webhook URL
+    required: true
+
+runs:
+  using: docker
+  image: docker://ahmadnassri/action-slack-workflow-notifications:v1
