@@ -13,7 +13,7 @@ function duration (element) {
   return Math.abs(duration / 1000)
 }
 
-module.exports = function (workflow, run, jobs) {
+module.exports = function (workflow, run, jobs, ignore = { jobs: [], steps: [] }) {
   // construct slack blocks
   const blocks = [
     {
@@ -41,6 +41,9 @@ module.exports = function (workflow, run, jobs) {
   for (const index in jobs) {
     const job = jobs[index]
 
+    // skip if in ignore list
+    if (ignore.jobs.includes(job.name)) continue
+
     blocks.push({
       type: 'section',
       text: {
@@ -58,11 +61,20 @@ module.exports = function (workflow, run, jobs) {
       }
     })
 
+    const text = []
+
+    for (const step of job.steps) {
+      // skip if in ignore list
+      if (ignore.steps.includes(step.name)) continue
+
+      text.push(`${conclusions[step.conclusion] || '🟫'} ${step.name}`)
+    }
+
     blocks.push({
       type: 'context',
       elements: [{
         type: 'mrkdwn',
-        text: job.steps.map(step => `${conclusions[step.conclusion] || '🟫'} ${step.name}`).join('\n')
+        text: text.join('\n')
       }]
     })
 
@@ -76,9 +88,7 @@ module.exports = function (workflow, run, jobs) {
       ]
     })
 
-    if (index < jobs.length - 1) {
-      blocks.push({ type: 'divider' })
-    }
+    blocks.push({ type: 'divider' })
   }
 
   return blocks

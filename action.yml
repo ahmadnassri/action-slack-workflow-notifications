@@ -14,6 +14,14 @@ inputs:
     description: A Slack Webhook URL
     required: true
 
+  ignore-jobs:
+    description: Comma separated list of job names to ignore
+
+  ignore-steps:
+    description: Comma separated list of step names to ignore
+    default:  Set up job, Complete job
+
+
 runs:
   using: docker
   image: docker://ahmadnassri/action-slack-workflow-notifications:v1

@@ -8,7 +8,11 @@ const message = require('./lib/message')
 // parse inputs
 const inputs = {
   token: core.getInput('github-token', { required: true }),
-  webhook: core.getInput('slack-webhook', { required: true })
+  webhook: core.getInput('slack-webhook', { required: true }),
+  ignore: {
+    jobs: (core.getInput('ignore-jobs') || '').split(',').map(Function.prototype.call, String.prototype.trim),
+    steps: (core.getInput('ignore-steps') || '').split(',').map(Function.prototype.call, String.prototype.trim)
+  }
 }
 
 // error handler
@@ -51,7 +55,7 @@ async function main () {
     run_id: github.context.runId
   })
 
-  const blocks = message(workflow, run.data, jobs)
+  const blocks = message(workflow, run.data, jobs, inputs.ignore)
 
   // send to Slack
   const webhook = new IncomingWebhook(inputs.webhook)

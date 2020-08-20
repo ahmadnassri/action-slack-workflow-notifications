@@ -48,7 +48,8 @@ const expected = [
     elements: [
       { type: 'plain_text', text: '9 steps, completed in 10s' }
     ]
-  }
+  },
+  { type: 'divider' }
 ]
 
 test('slack message', assert => {

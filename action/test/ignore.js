@@ -4,7 +4,7 @@ const { test } = require('tap')
 // module
 const message = require('../lib/message.js')
 
-const { workflow, run, jobs } = require('./fixtures/success.json')
+const { workflow, run, jobs } = require('./fixtures/mixed.json')
 
 const expected = [
   { type: 'header', text: { type: 'plain_text', text: 'repo.name: workflow.name #57' } },
@@ -17,7 +17,7 @@ const expected = [
   { type: 'divider' },
   {
     type: 'section',
-    text: { type: 'mrkdwn', text: '🟩 *job.name*' },
+    text: { type: 'mrkdwn', text: '🟥 *job1.name*' },
     accessory: {
       type: 'button',
       text: { type: 'plain_text', emoji: true, text: 'View' },
@@ -30,15 +30,46 @@ const expected = [
       {
         type: 'mrkdwn',
         text: [
-          '🟩 Set up job',
+          '🟩 Run actions/checkout@v2',
+          '🟩 Run hashicorp/setup-terraform@v1',
+          '🟩 Run actions/cache@v2',
+          '🟩 Run terraform init',
+          '🟥 Run terraform apply -auto-approve',
+          '🟦 Post Run actions/cache@v2',
+          '🟩 Post Run actions/checkout@v2'
+        ].join('\n')
+      }
+    ]
+  },
+  {
+    type: 'context',
+    elements: [
+      { type: 'plain_text', text: '9 steps, completed in 10s' }
+    ]
+  },
+  { type: 'divider' },
+  {
+    type: 'section',
+    text: { type: 'mrkdwn', text: '🟩 *job2.name*' },
+    accessory: {
+      type: 'button',
+      text: { type: 'plain_text', emoji: true, text: 'View' },
+      url: 'https://github.com/owner/repo/runs/run_id'
+    }
+  },
+  {
+    type: 'context',
+    elements: [
+      {
+        type: 'mrkdwn',
+        text: [
           '🟩 Run actions/checkout@v2',
           '🟩 Run hashicorp/setup-terraform@v1',
           '🟩 Run actions/cache@v2',
           '🟩 Run terraform init',
           '🟩 Run terraform apply -auto-approve',
           '🟦 Post Run actions/cache@v2',
-          '🟩 Post Run actions/checkout@v2',
-          '🟩 Complete job'
+          '🟩 Post Run actions/checkout@v2'
         ].join('\n')
       }
     ]
@@ -55,7 +86,7 @@ const expected = [
 test('slack message', assert => {
   assert.plan(1)
 
-  const blocks = message(workflow, run, jobs)
+  const blocks = message(workflow, run, jobs, { jobs: ['job.name'], steps: ['Set up job', 'Complete job'] })
 
   assert.same(blocks, expected)
 })

@@ -17,7 +17,7 @@ const expected = [
   { type: 'divider' },
   {
     type: 'section',
-    text: { type: 'mrkdwn', text: '🟥 *job.name*' },
+    text: { type: 'mrkdwn', text: '🟥 *job1.name*' },
     accessory: {
       type: 'button',
       text: { type: 'plain_text', emoji: true, text: 'View' },
@@ -52,7 +52,7 @@ const expected = [
   { type: 'divider' },
   {
     type: 'section',
-    text: { type: 'mrkdwn', text: '🟩 *job.name*' },
+    text: { type: 'mrkdwn', text: '🟩 *job2.name*' },
     accessory: {
       type: 'button',
       text: { type: 'plain_text', emoji: true, text: 'View' },
@@ -118,7 +118,8 @@ const expected = [
     elements: [
       { type: 'plain_text', text: '9 steps, completed in 10s' }
     ]
-  }
+  },
+  { type: 'divider' }
 ]
 
 test('slack message', assert => {

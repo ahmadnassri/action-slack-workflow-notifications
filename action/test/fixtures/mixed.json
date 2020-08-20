@@ -28,7 +28,7 @@
     "conclusion": "failure",
     "started_at": "2020-08-19T00:04:33Z",
     "completed_at": "2020-08-19T00:04:43Z",
-    "name": "job.name",
+    "name": "job1.name",
     "steps": [{
         "started_at": "2020-08-18T20:04:33.000-04:00",
         "completed_at": "2020-08-18T20:04:36.000-04:00",
@@ -89,7 +89,7 @@
     "conclusion": "success",
     "started_at": "2020-08-19T00:04:33Z",
     "completed_at": "2020-08-19T00:04:43Z",
-    "name": "job.name",
+    "name": "job2.name",
     "steps": [{
         "started_at": "2020-08-18T20:04:33.000-04:00",
         "completed_at": "2020-08-18T20:04:36.000-04:00",
