@@ -9,7 +9,7 @@ const conclusions = {
 }
 
 function duration (element) {
-  const duration = new Date(element.started_at).getTime() - new Date(element.completed_at).getTime()
+  const duration = new Date(element.completed_at).getTime() - new Date(element.started_at).getTime()
   return Math.abs(duration / 1000)
 }
 
