@@ -19,6 +19,8 @@
 
 Fully detailed GitHub Actions workflow notifications in Slack
 
+![](preview.png)
+
 ## Usage
 
 ```yaml
