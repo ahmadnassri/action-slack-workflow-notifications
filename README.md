@@ -41,6 +41,7 @@ jobs:
   # include one last job
   slack:
     if: ${{ always() }} # ensure this job always runs
+    needs: [ a-job, ... ] # indicate which jobs you want to wait for
     runs-on: ubuntu-latest
     steps:
       - uses: ahmadnassri/action-slack-workflow-notifications@v1
