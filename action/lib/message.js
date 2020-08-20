@@ -45,7 +45,7 @@ module.exports = function (workflow, run, jobs) {
       type: 'section',
       text: {
         type: 'mrkdwn',
-        text: `${conclusions[job.conclusion]} *${job.name}*`
+        text: `${conclusions[job.conclusion] || '🟫'} *${job.name}*`
       },
       accessory: {
         type: 'button',
@@ -59,12 +59,12 @@ module.exports = function (workflow, run, jobs) {
     })
 
     // only show steps if not a success
-    if (job.conclusion !== 'success') {
+    if (job.conclusion && job.conclusion !== 'success') {
       const details = {
         type: 'context',
         elements: [{
           type: 'mrkdwn',
-          text: job.steps.map(step => `${conclusions[step.conclusion]} ${step.name}`).join('\n')
+          text: job.steps.map(step => `${conclusions[step.conclusion] || '🟫'} ${step.name}`).join('\n')
         }]
       }
 
