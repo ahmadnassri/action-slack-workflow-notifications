@@ -27,6 +27,25 @@ const expected = [
   {
     type: 'context',
     elements: [
+      {
+        type: 'mrkdwn',
+        text: [
+          '🟩 Set up job',
+          '🟩 Run actions/checkout@v2',
+          '🟩 Run hashicorp/setup-terraform@v1',
+          '🟩 Run actions/cache@v2',
+          '🟩 Run terraform init',
+          '🟩 Run terraform apply -auto-approve',
+          '🟦 Post Run actions/cache@v2',
+          '🟩 Post Run actions/checkout@v2',
+          '🟩 Complete job'
+        ].join('\n')
+      }
+    ]
+  },
+  {
+    type: 'context',
+    elements: [
       { type: 'plain_text', text: '9 steps, completed in 10s' }
     ]
   }

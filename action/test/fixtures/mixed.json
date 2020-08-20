@@ -123,7 +123,7 @@
       {
         "started_at": "2020-08-18T20:04:42.000-04:00",
         "completed_at": "2020-08-18T20:04:42.000-04:00",
-        "conclusion": "failure",
+        "conclusion": "success",
         "name": "Run terraform apply -auto-approve"
       },
       {
