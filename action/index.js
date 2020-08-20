@@ -29,10 +29,12 @@ const octokit = github.getOctokit(inputs.token)
 
 async function main () {
   // fetch workflow
-  const workflow = await octokit.actions.getWorkflow({
-    ...github.context.repo,
-    workflow_id: github.context.workflow
+  const { data: { workflows } } = await octokit.actions.listRepoWorkflows({
+    ...github.context.repo
   })
+
+  // find the current workflow
+  const workflow = workflows.find(workflow => workflow.name === github.context.workflow)
 
   // fetch run
   const run = await octokit.actions.getWorkflowRun({
@@ -46,7 +48,7 @@ async function main () {
     run_id: github.context.runId
   })
 
-  const blocks = message(workflow.data, run.data, jobs)
+  const blocks = message(workflow, run.data, jobs)
 
   // send to Slack
   const webhook = new IncomingWebhook(inputs.webhook)
