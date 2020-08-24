@@ -16,8 +16,8 @@ const inputs = {
 }
 
 // error handler
-function errorHandler (err) {
-  core.error(`Unhandled error: ${err}`)
+function errorHandler ({ message, stack }) {
+  core.error(`${message}\n${stack}`)
   process.exit(1)
 }
 
