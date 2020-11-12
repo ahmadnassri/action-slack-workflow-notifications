@@ -1,0 +1,34 @@
+{
+  "workflow": {
+    "name": "workflow.name",
+    "created_at": "2020-06-17T11:34:09.000-04:00",
+    "updated_at": "2020-07-30T14:58:32.000-04:00"
+  },
+  "run": {
+    "head_branch": "master",
+    "run_number": 57,
+    "conclusion": "success",
+    "html_url": "https://github.com/owner/repo/actions/runs/214401517",
+    "created_at": "2020-08-19T00:04:14Z",
+    "updated_at": "2020-08-19T00:04:52Z",
+    "head_commit": {
+      "id": "78d034d2f7580f0535ce44a6d2cff9fdfc86de15",
+      "message": "commit.message",
+      "committer": {
+        "name": "Dev Bot"
+      }
+    },
+    "repository": {
+      "name": "repo.name",
+      "html_url": "https://github.com/owner/repo"
+    }
+  },
+  "jobs": [{
+    "html_url": "https://github.com/owner/repo/runs/run_id",
+    "conclusion": "success",
+    "started_at": "2020-08-19T00:04:33Z",
+    "completed_at": "2020-08-19T00:04:43Z",
+    "name": "job.name",
+    "steps": []
+  }]
+}
