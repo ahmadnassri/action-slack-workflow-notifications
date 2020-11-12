@@ -17,7 +17,7 @@ const inputs = {
 }
 
 // error handler
-function errorHandler ({ message, stack }) {
+function errorHandler (err) {
   console.error(err)
   core.setFailed(`Unhandled error: ${err}`)
 }
