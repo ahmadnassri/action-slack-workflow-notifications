@@ -10,8 +10,7 @@ Fully detailed GitHub Actions workflow notifications in Slack
 
 ![](docs/preview.png)
 
-Usage
------
+## Usage
 
 ``` yaml
 on:
@@ -45,10 +44,10 @@ jobs:
 ### Inputs
 
 | input           | required | default                    | description                                                     |
-|-----------------|----------|----------------------------|-----------------------------------------------------------------|
+| --------------- | -------- | -------------------------- | --------------------------------------------------------------- |
 | `slack-webhook` | ✔        | `-`                        | A Slack [Webhook URL](https://api.slack.com/messaging/webhooks) |
 | `github-token`  | ❌        | `github.token`             | The GitHub token used to update the pull-request                |
-| `ignore-jobs`   | ❌        | ``                         | Comma separated list of job names to ignore                     |
+| `ignore-jobs`   | ❌        | `  `                       | Comma separated list of job names to ignore                     |
 | `ignore-steps`  | ❌        | `Set up job, Complete job` | Comma separated list of step names to ignore                    |
 
 ----
