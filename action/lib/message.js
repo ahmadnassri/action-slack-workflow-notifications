@@ -74,7 +74,7 @@ module.exports = function (workflow, run, jobs, ignore = { jobs: [], steps: [] }
       type: 'context',
       elements: [{
         type: 'mrkdwn',
-        text: text.join('\n')
+        text: text.length > 0 ? text.join('\n') : "🟦 no steps executed"
       }]
     })
 
