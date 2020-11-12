@@ -1,4 +1,4 @@
-FROM node:slim
+FROM node:alpine
 
 LABEL com.github.actions.name="GitHub Slack Workflow Notifications" \
       com.github.actions.description="Fully detailed GitHub Actions workflow notifications in Slack" \

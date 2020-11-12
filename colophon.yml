@@ -1,0 +1,8 @@
+version: 2.0
+
+id: action-slack-workflow-notifications
+
+about:
+  title: "GitHub Action: GitHub Slack Workflow Notifications"
+  description: Fully detailed GitHub Actions workflow notifications in Slack
+  repository: ahmadnassri/action-slack-workflow-notifications

@@ -1,7 +1,8 @@
 // packages
-const { IncomingWebhook } = require('@slack/webhook')
 const core = require('@actions/core')
 const github = require('@actions/github')
+const { IncomingWebhook } = require('@slack/webhook')
+
 // libraries
 const message = require('./lib/message')
 
