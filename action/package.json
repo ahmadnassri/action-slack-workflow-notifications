@@ -21,6 +21,6 @@
     "@slack/webhook": "^5.0.3"
   },
   "devDependencies": {
-    "tap": "^14.10.8"
+    "tap": "^14.11.0"
   }
 }
