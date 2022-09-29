@@ -16,7 +16,7 @@
     "test:ci": "tap test --no-esm --100 --color --coverage-report=lcov --no-browser"
   },
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.10.0",
     "@actions/github": "^4.0.0",
     "@slack/webhook": "^6.0.0"
   },
